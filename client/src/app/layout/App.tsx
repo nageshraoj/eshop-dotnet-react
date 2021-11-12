@@ -7,7 +7,7 @@ import { ThemeProvider } from '@emotion/react'
 import HomePage from '../../components/home/HomePage'
 import ContactPage from '../../components/contact/ContactPage'
 import AboutPage from '../../components/about/AboutPage'
-import ProductsPage from '../../components/Catalogs/ProductsPage'
+import ProductsDetails from '../../components/Catalogs/ProductsDetails'
 
 function App() {
   const [darkMode, setDarkMode] = useState(false)
@@ -35,7 +35,7 @@ function App() {
             <Route path='/contact' element={<ContactPage />} />
             <Route path='/about' element={<AboutPage />} />
             <Route path='/catalog' element={<Catalog />} />
-            <Route path='/products/:id' element={<ProductsPage />} />
+            <Route path='/products/:id' element={<ProductsDetails />} />
           </Routes>
         </Container>
       </ThemeProvider>

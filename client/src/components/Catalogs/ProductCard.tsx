@@ -10,6 +10,7 @@ import {
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { product } from '../../app/models/product'
+import { Link } from 'react-router-dom'
 
 interface propType {
   item: product
@@ -65,10 +66,18 @@ const ProductCard = ({ item }: propType) => {
           </Typography>
         </CardContent>
         <CardActions>
-          <Button sx={{ color: 'brown', fontWeight: 'bold' }} size='small'>
+          <Button variant='contained' color='primary' size='small'>
             Add to Cart
           </Button>
-          <Button sx={{ color: 'brown', fontWeight: 'bold' }} size='small'>
+
+          <Button
+            component={Link}
+            to={`/products/:${item.id}`}
+            variant='contained'
+            color='primary'
+            size='small'
+            sx={{ marginLeft: 'auto' }}
+          >
             View
           </Button>
         </CardActions>

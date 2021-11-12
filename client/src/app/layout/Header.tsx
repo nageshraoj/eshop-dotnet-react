@@ -1,7 +1,6 @@
 import {
   AppBar,
   Toolbar,
-  Typography,
   Switch,
   List,
   ListItem,
@@ -24,14 +23,16 @@ const Header = ({ screenTheme }: propType) => {
       display: 'flex',
     },
     tabStyle: {
+      margin: '0px 10px',
       color: 'white',
+      textDecoration: 'none',
+      borderRadius: '10px',
       '&:hover': {
         backgroundColor: '#E5890A',
-        borderRadius: '10px',
       },
 
-      '&:active': {
-        backgroundColor: '#DFD8CA',
+      '&.active': {
+        backgroundColor: '#9CC094',
       },
     },
   }))
@@ -39,10 +40,9 @@ const Header = ({ screenTheme }: propType) => {
   const styles = useStyles()
 
   const midTabItems: { title: string; path: string }[] = [
-    { title: 'home', path: '/' },
-    { title: 'about', path: '/about' },
     { title: 'catalog', path: '/catalog' },
     { title: 'contacts', path: '/contact' },
+    { title: 'about', path: '/about' },
   ]
 
   const rightTabItems: { title: string; path: string }[] = [
@@ -52,9 +52,20 @@ const Header = ({ screenTheme }: propType) => {
 
   return (
     <AppBar position='sticky' sx={{ mb: 5 }}>
-      <Toolbar>
-        <Typography>My-Shoppy</Typography>
-        <Switch onChange={screenTheme} />
+      <Toolbar
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+        }}
+      >
+        <List className={styles.maintabStyle}>
+          <ListItem component={NavLink} to='/' className={styles.tabStyle}>
+            eShoppy
+          </ListItem>
+
+          <Switch onChange={screenTheme} />
+        </List>
 
         <List className={styles.maintabStyle}>
           {midTabItems.map(({ title, path }, index) => (
@@ -69,13 +80,12 @@ const Header = ({ screenTheme }: propType) => {
           ))}
         </List>
 
-        <IconButton>
-          <Badge badgeContent={4} sx={{color:'white'}} >
-            <ShoppingCart />
-          </Badge>
-        </IconButton>
-
         <List className={styles.righttabStyle}>
+          <IconButton size='large' sx={{ color: 'inherit' }}>
+            <Badge badgeContent={4} sx={{ color: 'secondary' }}>
+              <ShoppingCart />
+            </Badge>
+          </IconButton>
           {rightTabItems.map(({ title, path }, index) => (
             <ListItem
               key={index}
