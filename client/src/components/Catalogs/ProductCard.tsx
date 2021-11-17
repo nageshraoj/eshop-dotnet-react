@@ -10,12 +10,18 @@ import {
 } from '@mui/material'
 import { makeStyles } from '@mui/styles'
 import { product } from '../../app/models/product'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 interface propType {
   item: product
 }
+
+interface pathType {
+  path: string
+}
 const ProductCard = ({ item }: propType) => {
+  const navigate = useNavigate()
+
   const useStyles = makeStyles({
     cardStyle: {
       backgroundColor: '#DFD8CA',
@@ -23,13 +29,16 @@ const ProductCard = ({ item }: propType) => {
       opacity: 0.8,
       '&:hover': {
         opacity: 1.5,
-        cursor: 'pointer',
         transform: 'scale(1.1)',
       },
     },
   })
 
   const styles = useStyles()
+
+  const routeChange = ({ path }: pathType) => {
+    navigate(path)
+  }
 
   return (
     <>
@@ -55,7 +64,9 @@ const ProductCard = ({ item }: propType) => {
             height: 140,
             backgroundSize: 'contain',
             bgcolor: 'primary.light',
+            cursor: 'pointer',
           }}
+          onClick={() => routeChange({ path: `/products/:${item.id}` })}
         />
         <CardContent sx={{ color: 'blue' }}>
           <Typography gutterBottom variant='h5'>

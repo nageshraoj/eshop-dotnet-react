@@ -30,7 +30,6 @@ const Header = ({ screenTheme }: propType) => {
       '&:hover': {
         backgroundColor: '#E5890A',
       },
-
       '&.active': {
         backgroundColor: '#9CC094',
       },
@@ -41,7 +40,7 @@ const Header = ({ screenTheme }: propType) => {
 
   const midTabItems: { title: string; path: string }[] = [
     { title: 'catalog', path: '/catalog' },
-    { title: 'contacts', path: '/contact' },
+    { title: 'contact', path: '/contact' },
     { title: 'about', path: '/about' },
   ]
 
